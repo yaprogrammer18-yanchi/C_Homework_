@@ -9,7 +9,8 @@ int main()
                 for (int i4 = 0; i4 < 10; i4++) {
                     for (int i5 = 0; i5 < 10; i5++) {
                         for (int i6 = 0; i6 < 10; i6++) {
-                            if (i1 + i2 + i3 == i4 + i5 + i6) {
+                            if (i1 + i2 + i3 == i4 + i5 + i6) 
+                            {
                                 count += 1;
                             }
                         }
