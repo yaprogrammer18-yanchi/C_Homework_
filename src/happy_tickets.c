@@ -1,25 +1,22 @@
 #include <stdio.h>
 
-int main()
-{
+int main() {
     int count = 0;
-    for (int i1 = 0; i1 < 10; i1++) {
-        for (int i2 = 0; i2 < 10; i2++) {
-            for (int i3 = 0; i3 < 10; i3++) {
-                for (int i4 = 0; i4 < 10; i4++) {
-                    for (int i5 = 0; i5 < 10; i5++) {
-                        for (int i6 = 0; i6 < 10; i6++) {
-                            if (i1 + i2 + i3 == i4 + i5 + i6) 
-                            {
-                                count += 1;
-                            }
-                        }
-                    }
-                }
+    int sums[28] = { 0 }; // в массив будем заносить сколькими способами можно получить суммы от 0 до 27
+    for (int a = 0; a <= 9; a++) {
+        for (int b = 0; b <= 9; b++) {
+            for (int c = 0; c <= 9; c++) {
+                int sum = a + b + c;
+                sums[sum] += 1; // увеличиваем эл-т массива с индексом суммы на 1
             }
         }
     }
 
-    printf("%d", count);
+    for (int i = 0; i <= 27; i++) {
+        count += sums[i] * sums[i]; // считаем сколькими разными способами можно получить одинаковые суммы первых трех и
+                                    // последних трех цифр
+    }
+    printf("%d\n", count);
     return 0;
 }
+
