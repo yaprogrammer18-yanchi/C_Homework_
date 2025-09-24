@@ -12,26 +12,32 @@
 
 int main()
 {
-    int n; // длина конца
-    int m; // длина начала
+    int n = 0; // длина конца
+    int m = 0; // длина начала
     scanf("%d %d", &n, &m); // я так поняла, что пользователь сам вводит длину массива
 
-    int list[m + n];
+    int *list = calloc(n+m, sizeof(int));
     for (int i = 0; i < m + n; i++) {
         list[i] = i + 1; // заполняем массив значениями, чтобы в нем хранилось что-то упорядоченное, для наглядности, что нужный порядок сохраняется
     }
-    int from_begining_to_end;
+    int fromBeginingToEnd = 0;
     for (int i = 0; i < m; i++) {
-        from_begining_to_end = list[0];
+        fromBeginingToEnd = list[0];
         for (int j = 1; j <= m + n - 1; j++) {
             list[j - 1] = list[j];
         }
-        list[m + n - 1] = from_begining_to_end;
+        list[m + n - 1] = fromBeginingToEnd;
     }
     int a = 0;
     for (int i = 0; i < m + n; i++) {
-        printf("%d", list[i]);
-    }
 
+        if (i == m + n - 1) {
+            printf("%d\n", list[i]);
+        } else {
+            printf("%d", list[i]);
+        }
+    }
+    free(list);
     return 0;
 }
+
