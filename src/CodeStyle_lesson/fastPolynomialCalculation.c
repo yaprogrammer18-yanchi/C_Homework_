@@ -3,11 +3,10 @@
 
 int main()
 {
-    int x;
-    int t;
+    int x = 0;
     scanf("%d", &x);
-    t = x * x;
+    int t = x * x;
     int result = (t + x) * (t + 1) + 1;
-    printf("%d", result);
+    printf("%d\n", result);
     return 0;
 }
