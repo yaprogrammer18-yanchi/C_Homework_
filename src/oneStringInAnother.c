@@ -1,31 +1,31 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int main()
 {
-    char list_s[] = "hellohellhellolllhello";
-    char list_s1[] = "hello";
+    char listForBiggerString[] = "hellohellhellolllhello";
+    char listForSmallerString[] = "hello";
 
-    size_t lenS = sizeof(list_s) / sizeof(char);
-    size_t lenS1 = sizeof(list_s1) / sizeof(char) - 1;  // так как последний символ нулевой
+    size_t lenForBiggerString = sizeof(listForBiggerString) / sizeof(char);
+    size_t lenForSmallerString = sizeof(listForSmallerString) / sizeof(char) - 1; // так как последний символ нулевой
 
-    int count = 0; // счетчик вхождений
-    for (int i = 0; i < lenS; i++) // i - индекс того эл-та с которого будем рассматривать строку s
+    int countingOfEntry = 0; // счетчик вхождений
+    for (int i = 0; i < lenForBiggerString; i++) // i - индекс того эл-та с которого будем рассматривать большую строку
     {
         bool flag = true; // Это значит, что все символы строк совпадают, но если хотя бы один символ будет отличаться, будем менять на 0 и выходить из цикла
-        for (int j = 0; j < lenS1; j++) {
-            if (list_s[i + j] != list_s1[j]) {
+        for (int j = 0; j < lenForSmallerString; j++) {
+            if (listForBiggerString[i + j] != listForSmallerString[j]) {
                 flag = false; // опа, строчки отличаются
                 break;
             }
         }
-        if (flag == true) // все символы совпали
+        if (flag) // все символы совпали
         {
-            count += 1;
+            ++countingOfEntry;
         }
     }
-    printf("%d\n", count);
+    printf("%d\n", countingOfEntry);
 
     return 0;
 }
