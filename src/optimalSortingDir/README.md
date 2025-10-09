@@ -1,6 +1,7 @@
 Инструкция по сборке
 
 gcc -S -O2 sort.c -o sort.s
-gcc main.c -c
-gcc main.o sort.s -o main
 
+gcc -Wall -Wextra -pedantic main.c -c
+
+gcc -Wall -Wextra -pedantic main.o sort.s -o main
