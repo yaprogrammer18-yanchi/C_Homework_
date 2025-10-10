@@ -3,11 +3,11 @@
 
 int sort(int *list, int length) {
 
-  int *unsortedMassive =
+  int *unsortedArray =
       calloc(length, sizeof(int)); // c помощью этого списка будем счиатать
                                    // элементы, изменившие свою позицию
   for (int i = 0; i < length; i++) {
-    unsortedMassive[i] = list[i];
+    unsortedArray[i] = list[i];
   }
   // копируем переданный список
 
@@ -25,10 +25,10 @@ int sort(int *list, int length) {
   int count = 0;
   // смотрим какие элементы изменили свою позицию
   for (int k = 0; k < length; k++) {
-    if (list[k] != unsortedMassive[k]) {
+    if (list[k] != unsortedArray[k]) {
       count += 1;
     }
   }
-  free(unsortedMassive);
+  free(unsortedArray);
   return count;
 }

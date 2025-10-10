@@ -4,7 +4,7 @@
 
 int main() {
 
-  int *MassiveWithNumbers = calloc(100, sizeof(int));
+  int *ArrayWithNumbers = calloc(100, sizeof(int));
   int length = 0;
   char nextSymbol = 0;
   while (nextSymbol != '\n') {
@@ -12,7 +12,7 @@ int main() {
     int input = scanf("%d", &inputNumber);
     if (input == 1) // scanf успешно прочитал введенное число
     {
-      MassiveWithNumbers[length++] = inputNumber; // добавляем число в список
+      ArrayWithNumbers[length++] = inputNumber; // добавляем число в список
     }
     else {
       return 1;
@@ -23,7 +23,7 @@ int main() {
     }
   }
 
-  printf("%d\n", sort(MassiveWithNumbers, length));
+  printf("%d\n", sort(ArrayWithNumbers, length));
 
   return 0;
 }
