@@ -13,8 +13,7 @@ int main() {
     if (input == 1) // scanf успешно прочитал введенное число
     {
       ArrayWithNumbers[length++] = inputNumber; // добавляем число в список
-    }
-    else {
+    } else {
       return 1;
     }
     nextSymbol = getchar(); // читаем символ, который был введен дальше
