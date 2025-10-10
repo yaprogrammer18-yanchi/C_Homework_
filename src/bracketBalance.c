@@ -2,55 +2,42 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bool checkBrackets(char* stringWithBrackets)
+{
+    //специальный счетчик, "(" это +1 ")" это -1. Если скобочная посл-ть правильная, counter == 0
+    int counter = 0;
+    bool bracketsExist = false;
+
+    for (int i = 0; i < 100; i++) {
+        if (stringWithBrackets[i] == '(') {
+            counter++;
+            bracketsExist = true;
+        }
+        if (stringWithBrackets[i] == ')') {
+            counter--;
+            bracketsExist = true;
+        }
+        if (counter < 0) {
+            break;
+        }
+    }
+    if (bracketsExist && counter == 0) {
+        return true;
+    }
+    return false;
+}
+
 int main()
 {
-    int* stackForBrackets = calloc(100, sizeof(int)); // сделаем большой стек состоящий из 100 нулей
-    char* stringWithBrackets = calloc(100, sizeof(char)); // строка из 100 символов
-    scanf("%100[^\n]", stringWithBrackets); // ввели строку (огранчение 100 символов)
+    char* stringWithBrackets = calloc(100, sizeof(char));
+    scanf("%100[^\n]", stringWithBrackets);
+    bool isCorrect = checkBrackets(stringWithBrackets);
 
-    int count = 0; // счетчик того, сколько позиций занято в стеке
-    char str1 = ' '; // здесь будут символы из строки
-    char str2 = '(';
-    char str3 = ')';
-
-    bool isEverythingOk = true; // флаг, что все скобки пока идут правильно
-
-    for (int i = 0; i < 100; i++) // перебор символов введенной строки
-    {
-        str1 = stringWithBrackets[i];
-
-        if (str1 == str2) // Ищем окрывающие скобки
-        {
-            stackForBrackets[count] = 2; // пусть 2 - это открывающая скобка
-            ++count;
-        }
-
-        else if (str1 == str3) // если скобка закрывающаяся
-        {
-            if (stackForBrackets[count - 1] == 2) // то все ок
-            {
-                stackForBrackets[count - 1] = 0;
-                count -= 1;
-                // этими действиями мы убрали закрытые скобки, будто их и не было
-            } else {
-
-                isEverythingOk = false;
-                break;
-            }
-        }
-    }
-    // Если скобочная последовательность правильная, то стек в конце будет состоять только из нулей
-    if (isEverythingOk && stackForBrackets[0] == 2) {
-        printf("Скобочная последовательность неправильная\n");
-    }
-
-    else if (isEverythingOk) {
+    if (isCorrect) {
         printf("Скобочная последовательность правильная\n");
-    }
-
-    else {
+    } else {
         printf("Скобочная последовательность неправильная\n");
     }
-
+    free(stringWithBrackets);
     return 0;
 }

@@ -4,28 +4,32 @@
 
 int main()
 {
-    char listForBiggerString[] = "hellohellhellolllhello";
-    char listForSmallerString[] = "hello";
+    char biggerString[] = "hellohellhellolllhello";
+    char smallerString[] = "hello";
+    size_t lenForBiggerString = sizeof(biggerString) / sizeof(char) - 1;
+    size_t lenForSmallerString = sizeof(smallerString) / sizeof(char) - 1;
 
-    size_t lenForBiggerString = sizeof(listForBiggerString) / sizeof(char);
-    size_t lenForSmallerString = sizeof(listForSmallerString) / sizeof(char) - 1; // так как последний символ нулевой
-
-    int countingOfEntry = 0; // счетчик вхождений
-    for (int i = 0; i < lenForBiggerString; i++) // i - индекс того эл-та с которого будем рассматривать большую строку
-    {
-        bool flag = true; // Это значит, что все символы строк совпадают, но если хотя бы один символ будет отличаться, будем менять на 0 и выходить из цикла
-        for (int j = 0; j < lenForSmallerString; j++) {
-            if (listForBiggerString[i + j] != listForSmallerString[j]) {
-                flag = false; // опа, строчки отличаются
+    int entryCounter = 0;
+    // i - индекс эл-та с которого будем рассматривать большую строку
+    for (unsigned int i = 0; i < lenForBiggerString; i++) {
+        bool flag = true;
+        for (unsigned int j = 0; j < lenForSmallerString; j++) {
+            if (i + j < lenForBiggerString) {
+                if (biggerString[i + j] != smallerString[j]) {
+                    flag = false;
+                    break;
+                }
+            } else {
+                flag = false;
                 break;
             }
         }
-        if (flag) // все символы совпали
-        {
-            ++countingOfEntry;
+        if (flag) {
+            ++entryCounter;
         }
     }
-    printf("%d\n", countingOfEntry);
+    printf("%d\n", entryCounter);
 
     return 0;
 }
+// Должно вывести 3
