@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 int main() {
-
   int *arrayWithNumbers = calloc(100, sizeof(int));
   int length = 0;
   char nextSymbol = 0;
