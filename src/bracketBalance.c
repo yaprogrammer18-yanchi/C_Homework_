@@ -6,8 +6,8 @@ bool checkBrackets(char* stringWithBrackets)
 {
     //специальный счетчик, "(" это +1 ")" это -1. Если скобочная посл-ть правильная, counter == 0
     int counter = 0;
+    // переменная, чтобы сказать пользователю, что нет скобок вообще или что скобочная последовательность неверная
     bool bracketsExist = false;
-
     for (int i = 0; i < 100; i++) {
         if (stringWithBrackets[i] == '(') {
             counter++;
@@ -36,7 +36,7 @@ int main()
     if (isCorrect) {
         printf("Скобочная последовательность правильная\n");
     } else {
-        printf("Скобочная последовательность неправильная\n");
+        printf("Скобочная последовательность неправильная или не было введено ни одной скобки\n");
     }
     free(stringWithBrackets);
     return 0;
