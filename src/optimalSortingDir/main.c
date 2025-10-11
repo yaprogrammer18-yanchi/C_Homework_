@@ -4,26 +4,29 @@
 
 int main() {
 
-  int *ArrayWithNumbers = calloc(100, sizeof(int));
+  int *arrayWithNumbers = calloc(100, sizeof(int));
   int length = 0;
   char nextSymbol = 0;
   while (nextSymbol != '\n') {
     int inputNumber = 0;
     int input = scanf("%d", &inputNumber);
-    if (input == 1) // scanf успешно прочитал введенное число
+    // scanf успешно прочитал введенное число
+    printf("%d", input);
+    if (input == 1)
     {
-      ArrayWithNumbers[length++] = inputNumber; // добавляем число в список
+      // добавляем число в список
+      arrayWithNumbers[length++] = inputNumber;
     } else {
       return 1;
     }
-    nextSymbol = getchar(); // читаем символ, который был введен дальше
+    // читаем символ, который был введен дальше
+    nextSymbol = getchar();
     if (nextSymbol == '\n') {
       break;
     }
   }
 
-  printf("%d\n", sort(ArrayWithNumbers, length));
-
+  printf("%d\n", sort(arrayWithNumbers, length));
   return 0;
 }
 
