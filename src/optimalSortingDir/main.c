@@ -11,7 +11,6 @@ int main() {
     int inputNumber = 0;
     int input = scanf("%d", &inputNumber);
     // scanf успешно прочитал введенное число
-    printf("%d", input);
     if (input == 1)
     {
       // добавляем число в список
