@@ -6,42 +6,36 @@
 sort:
 .LFB11:
 	.cfi_startproc
-	pushq	%r13
-	.cfi_def_cfa_offset 16
-	.cfi_offset 13, -16
 	pushq	%r12
-	.cfi_def_cfa_offset 24
-	.cfi_offset 12, -24
+	.cfi_def_cfa_offset 16
+	.cfi_offset 12, -16
 	movslq	%esi, %r12
 	movl	$4, %esi
 	pushq	%rbp
-	.cfi_def_cfa_offset 32
-	.cfi_offset 6, -32
-	pushq	%rbx
-	.cfi_def_cfa_offset 40
-	.cfi_offset 3, -40
-	movq	%rdi, %rbx
+	.cfi_def_cfa_offset 24
+	.cfi_offset 6, -24
+	movq	%rdi, %rbp
 	movq	%r12, %rdi
-	subq	$8, %rsp
-	.cfi_def_cfa_offset 48
+	pushq	%rbx
+	.cfi_def_cfa_offset 32
+	.cfi_offset 3, -32
+	movq	%r12, %rbx
+	salq	$2, %r12
 	call	calloc@PLT
-	movq	%rax, %r8
-	testl	%r12d, %r12d
-	jle	.L9
-	movl	%r12d, %edx
-	movq	%rbx, %rsi
-	leal	-1(%r12), %ebp
+	movq	%r12, %rdx
+	movq	%rbp, %rsi
 	movq	%rax, %rdi
-	salq	$2, %rdx
 	call	memcpy@PLT
-	leaq	0(,%r12,4), %rdi
 	movq	%rax, %r8
-	leaq	-4(%rbx,%rdi), %rsi
+	testl	%ebx, %ebx
+	jle	.L9
+	leal	-1(%rbx), %edi
+	leaq	-4(%rbp,%r12), %rsi
 	.p2align 4
 	.p2align 3
 .L3:
-	movq	%rbx, %rax
-	testl	%ebp, %ebp
+	movq	%rbp, %rax
+	testl	%edi, %edi
 	jle	.L7
 	.p2align 6
 	.p2align 4
@@ -60,8 +54,8 @@ sort:
 	cmpq	%rsi, %rax
 	jne	.L5
 .L7:
-	subl	$1, %ebp
-	cmpq	%rbx, %rsi
+	subl	$1, %edi
+	cmpq	%rbp, %rsi
 	je	.L10
 	subq	$4, %rsi
 	jmp	.L3
@@ -69,39 +63,43 @@ sort:
 	.p2align 3
 .L10:
 	xorl	%eax, %eax
-	xorl	%ebp, %ebp
+	xorl	%ebx, %ebx
 	.p2align 5
 	.p2align 4
 	.p2align 3
 .L6:
-	movl	(%r8,%rax), %esi
-	cmpl	%esi, (%rbx,%rax)
+	movl	(%r8,%rax), %edi
+	cmpl	%edi, 0(%rbp,%rax)
 	je	.L8
-	addl	$1, %ebp
+	addl	$1, %ebx
 .L8:
 	addq	$4, %rax
-	cmpq	%rdi, %rax
+	cmpq	%rax, %r12
 	jne	.L6
-.L2:
 	movq	%r8, %rdi
 	call	free@PLT
-	addq	$8, %rsp
-	.cfi_remember_state
-	.cfi_def_cfa_offset 40
-	movl	%ebp, %eax
+	movl	%ebx, %eax
 	popq	%rbx
-	.cfi_def_cfa_offset 32
-	popq	%rbp
+	.cfi_remember_state
 	.cfi_def_cfa_offset 24
-	popq	%r12
+	popq	%rbp
 	.cfi_def_cfa_offset 16
-	popq	%r13
+	popq	%r12
 	.cfi_def_cfa_offset 8
 	ret
 .L9:
 	.cfi_restore_state
-	xorl	%ebp, %ebp
-	jmp	.L2
+	xorl	%ebx, %ebx
+	movq	%r8, %rdi
+	call	free@PLT
+	movl	%ebx, %eax
+	popq	%rbx
+	.cfi_def_cfa_offset 24
+	popq	%rbp
+	.cfi_def_cfa_offset 16
+	popq	%r12
+	.cfi_def_cfa_offset 8
+	ret
 	.cfi_endproc
 .LFE11:
 	.size	sort, .-sort

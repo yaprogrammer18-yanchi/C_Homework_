@@ -11,8 +11,7 @@ int main() {
     int inputNumber = 0;
     int input = scanf("%d", &inputNumber);
     // scanf успешно прочитал введенное число
-    if (input == 1)
-    {
+    if (input == 1) {
       // добавляем число в список
       arrayWithNumbers[length++] = inputNumber;
     } else {

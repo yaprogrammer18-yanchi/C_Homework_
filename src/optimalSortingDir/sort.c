@@ -5,7 +5,7 @@
 int sort(int *array, int length) {
   // c помощью этого списка будем считать элементы, изменившие свою позицию
   int *unsortedArray = calloc(length, sizeof(int));
-  memcpy(unsortedArray, array, sizeof(int)*length);
+  memcpy(unsortedArray, array, sizeof(int) * length);
   // сортировка пузырьком
   for (int i = 0; i < length; i++) {
     for (int j = 0; j < length - 1 - i; j++) {
