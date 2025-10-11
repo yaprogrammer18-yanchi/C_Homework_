@@ -24,7 +24,6 @@ int main() {
       break;
     }
   }
-
   printf("%d\n", sort(arrayWithNumbers, length));
   return 0;
 }
