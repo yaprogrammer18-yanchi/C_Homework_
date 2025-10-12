@@ -22,7 +22,6 @@ int main() {
     }
   }
   printf("%d\n", entryCounter);
-
   return 0;
 }
 // Должно вывести 3
