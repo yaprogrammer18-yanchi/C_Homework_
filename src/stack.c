@@ -1,14 +1,5 @@
-#include <stdlib.h>
 #include "stack.h"
-
-struct StackNode {
-    int value;
-    struct StackNode* next;
-};
-
-struct Stack {
-    struct StackNode* head;
-};
+#include <stdlib.h>
 
 struct Stack newStack(void)
 {
