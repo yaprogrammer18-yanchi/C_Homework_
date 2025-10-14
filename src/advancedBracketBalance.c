@@ -19,7 +19,6 @@ bool checkBrackets(int counter, char* stringWithBrackets)
         else if ((tmp == ')' || tmp == '}' || tmp == ']') && (stack.head != NULL)) {
             char previousBracket = pop(&stack);
             // проверка скобок одного типа через номера из таблицы ASCII
-
             if ((previousBracket + 1 == tmp) || (previousBracket + 2 == tmp)) {
                 continue;
             } else {
@@ -48,7 +47,6 @@ int main()
     int len = 0;
     printf("Введите, сколько символов Вы хотите ввести, закончите ввод, нажав enter\n");
     printf("На следующей строке введите скобочную последовательность\n");
-    ;
     scanf("%d", &len);
     // отловим этот '\n'
     getchar();
