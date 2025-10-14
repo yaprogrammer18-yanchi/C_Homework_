@@ -22,7 +22,6 @@ char* convertString(char* string, int len)
     // не все значения будут идти в очередь, а надо, чтобы элементы в ней располагались один за другим, для этого пусть будет этот счетчик
     int countForQueue = 0;
     int i = 0;
-
     while (i != len) {
         // если число
         if (isdigit(string[i])) {
@@ -46,7 +45,6 @@ char* convertString(char* string, int len)
                 return "ERROR: you missed openning bracket symbol";
             }
         }
-
         // если операторы + - * /
         if ((string[i] == '+') || (string[i] == '-') || (string[i] == '*') || (string[i] == '/')) {
             // если оператор, но по приоритету такой же или меньший чем в стеке
@@ -89,7 +87,6 @@ int main()
     for (unsigned i = 0; i <= strlen(queue); i++) {
         if (i == 0) {
             printf("%c", queue[i]);
-
         } else if (i == strlen(queue)) {
             printf("%c\n", queue[i]);
         } else {
