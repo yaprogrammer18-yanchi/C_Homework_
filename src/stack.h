@@ -1,29 +1,25 @@
 #pragma once
+#include <stdbool.h>
+
 // структура обыкновенного элемента в стеке
-struct StackNode {
-    int value;
-    struct StackNode* next;
-};
+typedef struct StackNode StackNode;
 
 // сам стек (структура содержащая указатель на первый элемент стека)
-struct Stack {
-    struct StackNode* head;
-};
-
+typedef struct Stack Stack;
 /*
  * Функция создания "нового стека".
  * Ничего не принимает.
  * Возвращает элемент типа struct Stack.
  * Создает первый элемент в стеке без значения (value), ссылающийся на NULL
  */
-struct Stack newStack(void);
+Stack *newStack(void);
 
 /*
  * Функция, добавляющая новый элемент в стек.
- * Принимает указатель на последний элемент стека, куда пользователь хочет добавить новый элемент, и его значение типа int.
- * Ничего не возвращает.
+ * Принимает указатель на последний элемент стека, куда пользователь хочет
+ * добавить новый элемент, и его значение типа int. Ничего не возвращает.
  */
-void push(struct Stack* stack, int value);
+void push(Stack *stack, int value);
 
 /*
  * Pop функция берет элемент из стека и возвращает его значение,
@@ -31,13 +27,13 @@ void push(struct Stack* stack, int value);
  * На вход принимает указатель на последний элемент стека.
  * Пользователь должен проверить, что он не передает в функцию пустой стек.
  */
-int pop(struct Stack* stack);
+int pop(Stack *stack);
 
 /*
  * Функция peek принимает на вход указатель на последний элемент стека,
  * возвращает значение, лежащее в последнем элементе стека.
  */
-int peek(struct Stack* stack);
+int peek(Stack *stack);
 
 /*
  * Функция удаления стека (освобождения памяти).
@@ -45,4 +41,6 @@ int peek(struct Stack* stack);
  * Ничего не возвращает.
  * Перебирает элементы стека и освобождает память, которую они занимают.
  */
-void deleteStack(struct Stack* stack);
+void deleteStack(Stack *stack);
+
+bool isEmpty(Stack *stack);
