@@ -2,4 +2,4 @@ cmake_minimum_required(VERSION 3.25)
 
 project(C_Homework C)
 
-add_subdirectory(src/AdvancedBraketsBalance)
+add_subdirectory(src/AdvancedBraketBalance)
