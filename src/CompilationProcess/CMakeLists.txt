@@ -1,0 +1,3 @@
+add_executable(braketBalance bracketBalance.c)
+add_executable(oneStringInAnother oneStringInAnother.c)
+add_executable(zerosInMassive zerosInMassive.c)

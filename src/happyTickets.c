@@ -1,9 +1,11 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     int count = 0;
     int sums[28] = { 0 }; // в массив будем заносить сколькими способами можно получить суммы от 0 до 27
     for (int a = 0; a <= 9; a++) {
+
         for (int b = 0; b <= 9; b++) {
             for (int c = 0; c <= 9; c++) {
                 int sum = a + b + c;
@@ -12,11 +14,10 @@ int main() {
         }
     }
 
-    for (int i = 0; i <= 27; i++) {
+    for (int i = 0; i <= 27; i++)
         count += sums[i] * sums[i]; // считаем сколькими разными способами можно получить одинаковые суммы первых трех и
                                     // последних трех цифр
-    }
+
     printf("%d\n", count);
     return 0;
 }
-
