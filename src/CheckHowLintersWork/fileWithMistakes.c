@@ -1,37 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 int main(int argc, char* argv[])
 {
-    char dir[1024];
-    char cmd[1200];
-    char buff[1024];
+    char dir[1024] = { 0 };
+    char cmd[1200] = { 0 };
+    char buff[1024] = { 0 };
     FILE* fp = NULL;
-    int i = 0;
+    size_t bytes_read = 0;
+    const char* home_dir = NULL;
 
+    // Обработка аргументов командной строки
     if (argc == 2) {
-        strlcpy(dir, argv[1]);
+        strncpy(dir, argv[1], sizeof(dir) - 1);
+        dir[sizeof(dir) - 1] = '\0'; // Гарантируем нуль-терминацию
     } else {
-        if (getenv("HOME") != NULL) {
-            sprintf(dir, "%s", getenv("HOME"));
+        home_dir = getenv("HOME");
+        if (home_dir != NULL) {
+            strncpy(dir, home_dir, sizeof(dir) - 1);
+            dir[sizeof(dir) - 1] = '\0';
         } else {
-            strcpy(dir, "/");
+            strncpy(dir, "/", sizeof(dir) - 1);
         }
     }
+    snprintf(cmd, sizeof(cmd), "ls \"%s\"", dir);
 
-    snprintf(cmd, sizeof(cmd) - 1, "%s %s", "ls", dir);
     fp = popen(cmd, "r");
     if (fp == NULL) {
-        printf("Failed to invoke: %s\n", cmd);
+        fprintf(stderr, "Failed to invoke: %s\n", cmd);
+        return -1;
+    }
+    while ((bytes_read = fread(buff, 1, sizeof(buff) - 1, fp)) > 0) {
+        buff[bytes_read] = '\0';
+        printf("%s", buff);
+    }
+
+    if (ferror(fp)) {
+        fprintf(stderr, "Error reading from command\n");
+        pclose(fp);
         return -1;
     }
 
-    while ((i = fread(buff, 1, sizeof(buff), fp))) {
-        printf(buff);
-    }
-
     pclose(fp);
-
     return 0;
 }
