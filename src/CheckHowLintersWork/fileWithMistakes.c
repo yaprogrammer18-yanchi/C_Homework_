@@ -13,35 +13,36 @@ int main(int argc, char* argv[])
     const char* homeDir = NULL;
 
     if (argc == 2) {
-        strncpy_s(dir, argv[1], sizeof(dir) - 1);
-        dir[sizeof(dir) - 1] = '\0';
+        snprintf(dir, sizeof(dir), "%s", argv[1]);
     } else {
         homeDir = getenv("HOME");
         if (homeDir != NULL) {
-            strncpy_s(dir, homeDir, sizeof(dir) - 1);
-            dir[sizeof(dir) - 1] = '\0';
+            snprintf(dir, sizeof(dir), "%s", homeDir);
         } else {
-            strncpy_s(dir, "/", sizeof(dir) - 1);
+            snprintf(dir, sizeof(dir), "%s", "/");
         }
     }
-    snprintf_s(cmd, sizeof(cmd), "ls \"%s\"", dir);
+
+    snprintf(cmd, sizeof(cmd), "ls \"%s\"", dir);
 
     fp = popen(cmd, "r");
     if (fp == NULL) {
-        fprintf_s(stderr, "Failed to invoke: %s\n", cmd);
+        fputs("Failed to invoke command\n", stderr);
         return -1;
     }
+
     while ((bytesRead = fread(buff, 1, sizeof(buff) - 1, fp)) > 0) {
         buff[bytesRead] = '\0';
-        printf_s("%s", buff);
+        printf("%s", buff);
     }
 
     if (ferror(fp)) {
-        fprintf_s(stderr, "Error reading from command\n");
+        fputs("Error reading from command\n", stderr);
         pclose(fp);
         return -1;
     }
 
     pclose(fp);
     return 0;
+}
 }
