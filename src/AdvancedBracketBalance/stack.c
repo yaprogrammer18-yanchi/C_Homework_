@@ -1,9 +1,10 @@
 #include "stack.h"
 #include <stdbool.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 // структура обыкновенного элемента в стеке
+typedef struct StackNode StackNode;
+
 struct StackNode {
     int value;
     struct StackNode* next;
@@ -11,9 +12,8 @@ struct StackNode {
 
 // сам стек (структура содержащая указатель на первый элемент стека)
 struct Stack {
-  struct StackNode* head;
+    struct StackNode* head;
 };
-
 
 Stack* newStack(void)
 {
@@ -31,10 +31,6 @@ void push(Stack* stack, int value)
 
 int pop(Stack* stack)
 {
-    if (stack->head==NULL)
-    {
-        return '\0';
-    }
     StackNode* oldNode = stack->head;
     int res = oldNode->value;
     stack->head = oldNode->next;
@@ -49,14 +45,12 @@ int peek(struct Stack* stack)
     return res;
 }
 
-bool isEmpty(Stack* stack)
-{
-    return stack->head==NULL;
-}
+bool isEmpty(Stack* stack) { return stack->head == NULL; }
 
 void deleteStack(Stack* stack)
 {
     while (!isEmpty(stack)) {
         pop(stack);
     }
+    free(stack);
 }
