@@ -1,25 +1,37 @@
 #include "stack.h"
+#include <stdbool.h>
 #include <stdlib.h>
 
-struct Stack newStack(void)
+// структура обыкновенного элемента в стеке
+typedef struct StackNode StackNode;
+
+struct StackNode {
+    int value;
+    struct StackNode* next;
+};
+
+// сам стек (структура содержащая указатель на первый элемент стека)
+struct Stack {
+    struct StackNode* head;
+};
+
+Stack* newStack(void)
 {
-    struct Stack stack = {
-        .head = NULL
-    };
+    Stack* stack = calloc(1, sizeof(*stack));
     return stack;
 }
 
-void push(struct Stack* stack, int value)
+void push(Stack* stack, int value)
 {
-    struct StackNode* node = malloc(sizeof(struct StackNode));
+    StackNode* node = malloc(sizeof(StackNode));
     node->value = value;
     node->next = stack->head;
     stack->head = node;
 }
 
-int pop(struct Stack* stack)
+int pop(Stack* stack)
 {
-    struct StackNode* oldNode = stack->head;
+    StackNode* oldNode = stack->head;
     int res = oldNode->value;
     stack->head = oldNode->next;
     free(oldNode);
@@ -28,14 +40,17 @@ int pop(struct Stack* stack)
 
 int peek(struct Stack* stack)
 {
-    struct StackNode* headNode = stack->head;
+    StackNode* headNode = stack->head;
     int res = headNode->value;
     return res;
 }
 
-void deleteStack(struct Stack* stack)
+bool isEmpty(Stack* stack) { return stack->head == NULL; }
+
+void deleteStack(Stack* stack)
 {
-    while (stack->head != NULL) {
+    while (!isEmpty(stack)) {
         pop(stack);
     }
+    free(stack);
 }
