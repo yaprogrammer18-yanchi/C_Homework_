@@ -20,7 +20,6 @@ bool checkBrackets(char* stringWithBrackets)
             char previousBracket = pop(stack);
             if ((previousBracket == '(' && tmp == ')') || (previousBracket == '[' && tmp == ']') || (previousBracket == '{' && tmp == '}')) {
                 continue;
-
             } else {
                 isBalanced = false;
                 break;
