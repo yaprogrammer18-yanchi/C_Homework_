@@ -31,9 +31,6 @@ void push(Stack* stack, int value)
 
 int pop(Stack* stack)
 {
-    if (stack->head == NULL) {
-        return '\0';
-    }
     StackNode* oldNode = stack->head;
     int res = oldNode->value;
     stack->head = oldNode->next;
@@ -55,4 +52,5 @@ void deleteStack(Stack* stack)
     while (!isEmpty(stack)) {
         pop(stack);
     }
+    free(stack);
 }
