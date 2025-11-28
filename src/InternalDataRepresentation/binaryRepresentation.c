@@ -1,3 +1,4 @@
+#include "lib1.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>

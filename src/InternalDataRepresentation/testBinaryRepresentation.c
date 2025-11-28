@@ -1,7 +1,15 @@
+#include "lib1.h"
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+int* simpleConvertionToBin(int n);
+void addOne(int* binary);
+void invertBits(int* binary);
+int* convertToBinary(int n);
+int* sumBinNumbers(int* fnum, int* snum);
+int convertToDecimal(int* binary);
 
 bool testConverToDecimal()
 {
@@ -19,7 +27,7 @@ bool testConverToDecimal()
 bool testSimpleConvertionToBin()
 {
     printf("Тестирование simpleConvertiontoBin...\n");
-    int* result = simpleConvertiontoBin(5);
+    int* result = simpleConvertionToBin(5);
     int expected[] = { 0, 0, 0, 0, 0, 1, 0, 1 };
     for (int i = 0; i < 8; i++) {
         assert((result[i] == expected[i]) && "Ошибка в функции простого перевода в двоичную СС");
@@ -134,7 +142,7 @@ void runTests()
 {
     printf("===!!! ЗАПУСК ТЕСТОВ ДЛЯ ЗАДАЧИ ДВОИЧНОЕ ПРЕДСТАВЛЕНИЕ !!!===\n\n");
     testConverToDecimal();
-    testSimpleConvertionToBinary();
+    testSimpleConvertionToBin();
     testAddOne();
     testInvertBits();
     testConvertToBinary();
