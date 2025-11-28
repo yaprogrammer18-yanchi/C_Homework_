@@ -13,6 +13,6 @@ int main()
     for (int i = 1; i <= n; i++) {
         insert(list, i - 1, i);
     }
-    printf("%d", findTheSafeIndex(list, m));
+    printf("%d\n", findTheSafeIndex(list, m));
     return 0;
 }
