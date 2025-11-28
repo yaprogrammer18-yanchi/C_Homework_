@@ -4,10 +4,10 @@
 
 /*
 Я выбрала 8ми битное представление чисел, сответственно,
-диапазон выбора числа огранчен. от - 128 до 127 - безопасный диапазон.
+диапазон выбора числа огранчен. от [-128 , 127] - безопасный диапазон.
 */
 
-int* simpleConvertion(int n)
+int* simpleConvertionToBin(int n)
 {
     int* binary = calloc(8, sizeof(int));
     int i = 7;
@@ -54,7 +54,7 @@ int* convertToBinary(int n)
         isNegative = true;
         n = -n;
     }
-    int* binary = simpleConvertion(n);
+    int* binary = simpleConvertionToBin(n);
     if (isNegative) {
         invertBits(binary);
         addOne(binary);
@@ -97,8 +97,12 @@ int convertToDecimal(int* binary)
     return decimal;
 }
 
-int main(void)
+int main(int argc, char* argv[])
 {
+    if (argc == 2 && strcmp(argv[1], "--test") == 0) {
+        runTests();
+        return 0;
+    }
     int firstNum = 0;
     int secNum = 0;
     printf("-----------------\n");
