@@ -4,4 +4,6 @@ project(C_Homework C)
 
 add_subdirectory(src/InternalDataRepresentation)
 
+enable_testing()
+
 add_compile_options(-Wall -Wextra -Wpedantic)

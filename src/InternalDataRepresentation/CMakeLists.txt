@@ -1,3 +1,1 @@
-add_executable(binaryRepresentation 
-binaryRepresentation.c, 
-testBinaryRepresentation.c)
+add_executable(binaryRepresentation binaryRepresentation.c testBinaryRepresentation.c)
