@@ -2,7 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-
 void printMenu()
 {
     printf("\n=== МЕНЮ КОМАНД ===\n");

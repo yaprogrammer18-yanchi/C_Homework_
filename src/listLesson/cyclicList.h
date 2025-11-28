@@ -12,14 +12,14 @@ typedef struct List List;
  * ничего не принимает
  * возвращает указатель на объект типа List
  */
-List *newList();
+List* newList();
 
 /*
  * функция вставки элемента по заданному индексу
  * принимает на вход указатель на объект типа List, желаемый индекс и значение
  * возвращает булевое значение, сообщающее, удачно ли прошла операция
  */
-bool insert(List *list, int index, int value);
+bool insert(List* list, int index, int value);
 
 /*
  * функция удаления элемента по индексу
@@ -27,7 +27,7 @@ bool insert(List *list, int index, int value);
  * возвращает булевое значние, сообщающее, удачно ли прошла операция
  * внутри себя освобождает память удаляемого элемента
  */
-bool removeElement(List *list, int index);
+bool removeElement(List* list, int index);
 
 /*
  * функция удаления всего списка
@@ -35,21 +35,21 @@ bool removeElement(List *list, int index);
  * внутри себя вызывает функцию removeElement
  * возвращает булевое значение, удачно ли прошла операция
  */
-bool deleteList(List *list);
+bool deleteList(List* list);
 
 /*
  * функция проверки, пустой ли список
  * возвращает true если пустой, false, если нет
  * на вход принимает указатель на список
  */
-bool isEmpty(List *list);
+bool isEmpty(List* list);
 
 /*
  * функция проверки, один ли элемент в списке
  * возвращает true если да, false, если нет
  * на вход принимает указатель на список
  */
-bool oneElement(List *list);
+bool oneElement(List* list);
 
 /*
  * функция вывода списка в консоль
@@ -59,7 +59,7 @@ bool oneElement(List *list);
  * в случае переданного пустого или несуществующего списка сообщает об этом
  * пользователю
  */
-void printList(List *list);
+void printList(List* list);
 
 /*
  * функция, возвращающая длину списка
@@ -67,7 +67,7 @@ void printList(List *list);
  * проходится по всем элементам
  * возвращает его длину
  */
-int getLength(List *list);
+int getLength(List* list);
 
 /*
  * функция алгоритма Иосифа
@@ -76,4 +76,4 @@ int getLength(List *list);
  * куда нужно встать, по условию задачи функция создана исключительно для
  * реализации алгоритма из файла counting.c.
  */
-int findTheSafeIndex(List *list, int m);
+int findTheSafeIndex(List* list, int m);
