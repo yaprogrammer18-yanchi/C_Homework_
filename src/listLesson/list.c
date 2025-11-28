@@ -105,18 +105,6 @@ bool deleteList(List* list)
     return true;
 }
 
-// надо указатель на  втоорй список переделать на NULL и сообщить об этом
-// пользователю там два указаеля надо тип **
-List* appendLists(List* list1, List* list2)
-{
-    ListNode* currentIn1 = list1->head;
-    while (currentIn1->next != NULL) {
-        currentIn1 = currentIn1->next;
-    }
-    currentIn1->next = list2->head;
-    return list1;
-}
-
 void printList(List* list)
 {
     if (list == NULL || isEmpty(list)) {
