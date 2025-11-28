@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+Я выбрала 8ми битное представление чисел, сответственно,
+диапазон выбора числа огранчен. от - 128 до 127 - безопасный диапазон.
+*/
+
 int* simpleConvertion(int n)
 {
     int* binary = calloc(8, sizeof(int));
@@ -70,25 +75,24 @@ int* sumBinNumbers(int* fnum, int* snum)
     return sum;
 }
 
-int power(int base, int exponent)
-{
-    int result = 1;
-    for (int i = 0; i < exponent; i++) {
-        result *= base;
-    }
-    return result;
-}
-
 int convertToDecimal(int* binary)
 {
+    bool isNegative = false;
+    if (binary[1] == 1) {
+        invertBits(binary);
+        addOne(binary);
+        isNegative = true;
+    }
     int decimal = 0;
-    int power = 128; // 2⁷ для старшего бита
-
+    int power = 128;
     for (int i = 0; i < 8; i++) {
         if (binary[i] == 1) {
             decimal += power;
         }
-        power /= 2; // Уменьшаем степень двойки
+        power /= 2;
+    }
+    if (isNegative) {
+        return -decimal;
     }
     return decimal;
 }
@@ -119,7 +123,7 @@ int main(void)
     printf("\n");
     int sumDec = 0;
     sumDec = convertToDecimal(sum);
-    printf("Десятичная сумма: %d\n", &sum);
+    printf("Десятичная сумма: %d\n", sumDec);
     printf("-----------------\n");
 
     free(firstNumBin);
