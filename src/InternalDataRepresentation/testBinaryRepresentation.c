@@ -1,8 +1,9 @@
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void testConverToDecimal()
+bool testConverToDecimal()
 {
     printf("Тестирование convertToDecimal...\n");
     int positive[] = { 0, 0, 0, 0, 0, 1, 0, 1 };
@@ -12,9 +13,10 @@ void testConverToDecimal()
     int zero[] = { 0, 0, 0, 0, 0, 0, 0, 0 }; // 0
     assert((convertToDecimal(zero) == 0) && "Ошибка в функции перевода в десятичную СС нуля");
     printf("convertToDecimal тесты пройдены\n");
+    return true;
 }
 
-void testSimpleConvertionToBin()
+bool testSimpleConvertionToBin()
 {
     printf("Тестирование simpleConvertiontoBin...\n");
     int* result = simpleConvertiontoBin(5);
@@ -24,9 +26,10 @@ void testSimpleConvertionToBin()
     }
     free(result);
     printf("simpleConvertiontoBin тесты пройдены\n");
+    return true;
 }
 
-void testAddOne()
+bool testAddOne()
 {
     printf("Тестирование addOne...\n");
     int test1[] = { 1, 1, 1, 1, 1, 0, 1, 0 }; // -6 в обратном коде
@@ -43,10 +46,10 @@ void testAddOne()
         assert((test2[i] == expected2[i]) && "Ошибка в функции добавления 1 в дв.сс.");
     }
     printf("addOne тесты пройдены\n");
+    return true;
 }
 
-// Тест функции invertBits
-void testInvertBits()
+bool testInvertBits()
 {
     printf("Тестирование invertBits...\n");
 
@@ -64,9 +67,10 @@ void testInvertBits()
         assert((mixed[i] == expected_mixed[i]) && "Ошибка в функции инвертирования");
     }
     printf("invertBits тесты пройдены\n");
+    return true;
 }
 
-void testConvertToBinary()
+bool testConvertToBinary()
 {
     printf("Тестирование convertToBinary...\n");
 
@@ -91,9 +95,10 @@ void testConvertToBinary()
     }
     free(result_zero);
     printf("convertToBinary тесты пройдены\n");
+    return true;
 }
 
-void testSumBinNumbers()
+bool testSumBinNumbers()
 {
     printf("Тестирование sumBinNumbers...\n");
     int num1[] = { 0, 0, 0, 0, 0, 1, 0, 1 }; // 5
@@ -123,6 +128,7 @@ void testSumBinNumbers()
     }
     free(result);
     printf("sumBinNumbers тесты пройдены\n");
+    return true;
 }
 void runTests()
 {
