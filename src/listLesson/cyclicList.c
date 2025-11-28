@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+// структура обычного элемента в списке
+typedef struct ListNode ListNode;
+
 typedef struct ListNode {
     int value;
     ListNode* next;

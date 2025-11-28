@@ -1,9 +1,6 @@
 #pragma once
 #include <stdbool.h>
 
-// структура обычного элемента в списке
-typedef struct ListNode ListNode;
-
 // структура содержащая указатель на первый элемент списка
 typedef struct List List;
 

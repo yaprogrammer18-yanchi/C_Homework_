@@ -2,6 +2,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+
+typedef struct ListNode ListNode;
+
 // структура обычного элемента в списке
 struct ListNode {
     int value;
