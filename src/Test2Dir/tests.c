@@ -17,7 +17,7 @@ bool testConverToDecimal8bits()
     int num2[] = { 1, 1, 1, 1, 1, 1, 1, 1 };
     int* p2 = num2;
     if (convertToDecimal8bits(p2) != 255) {
-        printf("Тесты сломались на проверке перевода в десятичную сс (11111111 -> 31)\n");
+        printf("Тесты сломались на проверке перевода в десятичную сс (11111111 -> 255)\n");
         return false;
     }
 
