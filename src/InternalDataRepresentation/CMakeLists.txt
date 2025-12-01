@@ -1,1 +1,2 @@
 add_executable(binaryRepresentation binaryRepresentation.c testBinaryRepresentation.c)
+add_executable(Double DoubleUnderMicroscope.c testDoubleUnderMicroscope.c)
