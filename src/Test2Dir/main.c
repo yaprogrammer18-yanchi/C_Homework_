@@ -38,6 +38,8 @@ int compareTwoDecimalNumbers(bool* arr1, bool* arr2)
     int decimal1 = convertToDecimal8bits(newArr1);
     int* newArr2 = convertBoolElementsToInt(p2, 8);
     int decimal2 = convertToDecimal8bits(newArr2);
+    free(newArr1);
+    free(newArr2);
     if (decimal1 > decimal2) {
         return 1;
     } else if (decimal2 > decimal1) {
