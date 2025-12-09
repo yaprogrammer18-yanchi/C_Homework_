@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     int count = 0;
     int sums[28] = { 0 }; // в массив будем заносить сколькими способами можно получить суммы от 0 до 27
     for (int a = 0; a <= 9; a++) {
@@ -19,4 +20,3 @@ int main() {
     printf("%d\n", count);
     return 0;
 }
-
