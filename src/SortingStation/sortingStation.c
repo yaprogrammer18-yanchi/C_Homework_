@@ -15,10 +15,11 @@ int getPriority(char operand)
     return 0;
 }
 
-char* convertString(char* string, int len)
+char* convertString(char* string)
 {
     struct Stack* stack = newStack();
     char* queue = malloc(1000 * sizeof(char));
+    int len = strlen(string);
     int queueEndPtr = 0;
     int i = 0;
     while (i != len) {
@@ -75,7 +76,9 @@ char* convertString(char* string, int len)
     deleteStack(stack);
     // чтобы строка была корректной
     queue[queueEndPtr] = '\0';
-    return queue;
+    char* queue_realloced = realloc(queue, sizeof(char) * (strlen(queue) + 1));
+    free(stack);
+    return queue_realloced;
 }
 
 /*
@@ -89,14 +92,10 @@ int main()
     // 1001 так как последний символ отводится для \0
     printf("Введите выражение, не превышающее по длине 1001 символов\n");
     fgets(arifmeticExpression, 1001, stdin);
-    char* queue = convertString(arifmeticExpression, strlen(arifmeticExpression));
+    char* queue = convertString(arifmeticExpression);
     int queueLength = strlen(queue);
-    for (unsigned i = 0; i <= queueLength; i++) {
-        printf("%c", queue[i]);
-        if (i == strlen(queue)) {
-            printf("\n");
-        }
-    }
+    printf("%s\n", queue);
+    free(queue);
     free(arifmeticExpression);
     return 0;
 }
