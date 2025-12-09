@@ -46,7 +46,7 @@
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
+# Kernel Module Comspile Results
 *.mod*
 *.cmd
 .tmp_versions/
