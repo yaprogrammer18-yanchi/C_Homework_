@@ -237,6 +237,25 @@ bool testReverse()
     }
     deleteList(list4);
     deleteList(newOne4);
+
+    List* list5 = newList();
+    insert(list5, 0, 1);
+    insert(list5, 1, 1);
+    insert(list5, 2, 1);
+    List* newOne5 = reverse(list5);
+    int arr5[3] = { 1, 1, 1 };
+    int* p5 = arr5;
+    for (int i = 0; i < 3; i++) {
+        if (get(newOne5, i) != p5[i]) {
+            deleteList(list5);
+            deleteList(newOne5);
+            printf("Сломалось на проверке из одинаковых элементов\n");
+            return false;
+        }
+    }
+    deleteList(list5);
+    deleteList(newOne5);
+
     return true;
 }
 
