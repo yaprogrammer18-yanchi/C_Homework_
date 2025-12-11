@@ -217,7 +217,6 @@ bool testReverse()
     List* list3 = newList();
     insert(list3, 0, 1);
     List* newOne3 = reverse(list3);
-    printList(newOne3);
     if (get(newOne3, 0) != 1) {
         printf("Сломалось на списке из одного элемента\n");
         deleteList(list3);
