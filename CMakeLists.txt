@@ -4,7 +4,7 @@ project(C_Homework C)
 
 add_subdirectory(src/CheckHowLintersWork)
 
-add_subdirectory(src/ListTask1)
+add_subdirectory(src/ListTasks1)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
