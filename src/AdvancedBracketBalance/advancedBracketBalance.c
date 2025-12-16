@@ -8,17 +8,17 @@ bool checkBrackets(char* stringWithBrackets)
 {
     bool isBalanced = true;
     Stack* stack = newStack();
-    char tmp = ' ';
+    char ch = ' ';
     int length = strlen(stringWithBrackets);
     for (int i = 0; i < length; i++) {
-        tmp = stringWithBrackets[i];
-        if ((tmp == '(') || (tmp == '{') || (tmp == '[')) {
-            push(stack, tmp);
+        ch = stringWithBrackets[i];
+        if ((ch == '(') || (ch == '{') || (ch == '[')) {
+            push(stack, ch);
         }
         // если встретилась закрывающаяся и стек не пустой
-        else if ((tmp == ')' || tmp == '}' || tmp == ']') && (!isEmpty(stack))) {
+        else if ((ch == ')' || ch == '}' || ch == ']') && (!isEmpty(stack))) {
             char previousBracket = pop(stack);
-            if ((previousBracket == '(' && tmp == ')') || (previousBracket == '[' && tmp == ']') || (previousBracket == '{' && tmp == '}')) {
+            if ((previousBracket == '(' && ch == ')') || (previousBracket == '[' && ch == ']') || (previousBracket == '{' && ch == '}')) {
                 continue;
             } else {
                 isBalanced = false;
@@ -26,8 +26,9 @@ bool checkBrackets(char* stringWithBrackets)
             }
         }
         // закрывающаяся и пустой стек
-        else if ((tmp == ')' || tmp == '}' || tmp == ']') && (isEmpty(stack))) {
+        else if ((ch == ')' || ch == '}' || ch == ']') && (isEmpty(stack))) {
             isBalanced = false;
+            break;
         }
     }
     if (!isEmpty(stack)) {
