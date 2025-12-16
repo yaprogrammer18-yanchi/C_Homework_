@@ -98,13 +98,7 @@ void handleCommands()
 int main(int argc, char* argv[])
 {
     if (argc == 2 && strcmp(argv[1], "--test") == 0) {
-        bool allTestsPassed = runTests();
-        if (allTestsPassed) {
-            printf("Все тесты прошли успешно");
-        } else {
-            printf("Некоторые тесты не были пройдены");
-        }
-        printf("\n");
+        runTests();
         return 0;
     }
 
