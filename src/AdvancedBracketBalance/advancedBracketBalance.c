@@ -8,10 +8,9 @@ bool checkBrackets(char* stringWithBrackets)
 {
     bool isBalanced = true;
     Stack* stack = newStack();
-    char ch = ' ';
     int length = strlen(stringWithBrackets);
     for (int i = 0; i < length; i++) {
-        ch = stringWithBrackets[i];
+        char ch = stringWithBrackets[i];
         if ((ch == '(') || (ch == '{') || (ch == '[')) {
             push(stack, ch);
         }
