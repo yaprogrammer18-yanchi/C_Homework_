@@ -1,4 +1,4 @@
-add_library(listTask list.c)
+add_library(listTask OneLinkedList.c)
 
 add_executable(sortedListTask sortedListTask.c)
 

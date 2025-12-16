@@ -1,4 +1,4 @@
-#include "list.h"
+#include "OneLinkedList.h"
 #include <stdbool.h>
 #include <stdio.h>
 
@@ -6,7 +6,7 @@ void printMenu()
 {
     printf("\n=== МЕНЮ КОМАНД ===\n");
     printf("1 - Добавить элемент (с сортировкой по возрастанию)\n");
-    printf("2 - Удалить элемент по индексу\n");
+    printf("2 - Удалить элемент по значению\n");
     printf("3 - Вывести список\n");
     printf("0 - Выход из программы\n");
 }
@@ -28,25 +28,25 @@ void addElementInList(List* list)
         return;
     }
     clearInputBuffer();
-    insert_sorted_in_ascending_order(list, element);
+    insert(list, element);
     printf("Элемент успешно добавлен\n");
 }
 
 void removeElemetFromList(List* list)
 {
-    int index = 0;
-    printf("Введите индекс элемента, который хотите удалить: ");
-    if (scanf("%d", &index) != 1) {
-        printf("Ошибка: введен некорректный индекс!\n");
+    int value = 0;
+    printf("Введите значение элемента, который хотите удалить: ");
+    if (scanf("%d", &value) != 1) {
+        printf("Ошибка: введено некорректное значение!\n");
         clearInputBuffer();
         return;
     }
     clearInputBuffer();
 
-    if (removeElement(list, index)) {
+    if (removeElement(list, value)) {
         printf("Элемент успешно удален.\n");
     } else {
-        printf("Что-то пошло не так. Возможно введен неправильный индекс.\n");
+        printf("Что-то пошло не так. Возможно введено неверное значение.\n");
     }
 }
 
