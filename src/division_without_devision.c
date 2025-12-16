@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main()
+{
     int a;
     int b;
     int r = 0; // сколько раз вмещается b в a
